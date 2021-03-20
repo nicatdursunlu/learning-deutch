@@ -18,11 +18,11 @@
     <v-toolbar app dark class="primary">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
       <router-link to="/" tag="span" style="cursor: pointer">
-        <v-toolbar-title>Learning Deutch</v-toolbar-title>
+        <v-toolbar-title>Learning German</v-toolbar-title>
       </router-link>
       <v-spacer/>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.route">
+        <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.route" class="primary">
           <v-icon left>mdi-export-variant</v-icon>
           {{ item.title }}
         </v-btn>
