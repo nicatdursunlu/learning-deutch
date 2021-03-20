@@ -1,25 +1,34 @@
 <template>
-  <v-app>
-    <v-navigation-drawer absolute temporary v-model="drawer">
+  <div>
+    <v-navigation-drawer absolute temporary v-model="drawer" class="hidden-md-and-up">
       <v-list>
         <v-list-item v-for="(item, index) in menuItems" :key="index">
           <v-list-item-action>
-            <v-icon></v-icon>
+            <v-icon>mdi-export-variant</v-icon>
           </v-list-item-action>
+          <v-list-item-content>
+            <router-link :to="item.route">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </router-link>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <v-toolbar app dark class="primary">
-      <v-toolbar-title v-text="'Learning Deutch'"></v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <router-link to="/" tag="span" style="cursor: pointer">
+        <v-toolbar-title>Learning Deutch</v-toolbar-title>
+      </router-link>
       <v-spacer/>
-      <v-toolbar-items>
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.route">
-          <v-icon left v-html="item.icon"></v-icon>
+          <v-icon left>mdi-export-variant</v-icon>
           {{ item.title }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-  </v-app>
+  </div>
 </template>
 
 <script>
