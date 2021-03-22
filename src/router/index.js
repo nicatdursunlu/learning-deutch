@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+import Home from '../views/Home';
 import Books from "@/views/Books";
 import Words from "@/views/Words";
 import Signin from "@/views/Signin";
 import Profile from "@/views/Profile";
 import Signup from "@/views/Signup";
+import Book from "@/views/Book";
+
 import store from '../store'
 
 
@@ -21,6 +24,12 @@ const routes = [
     path: '/books',
     name: 'Books',
     component: Books
+  },
+  {
+    path: '/book/:id',
+    name: 'Book',
+    component: Book,
+    props: true
   },
   {
     path: '/words',
