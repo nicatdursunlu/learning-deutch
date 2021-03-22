@@ -3,9 +3,9 @@
     <v-navigation-drawer absolute temporary v-model="drawer" class="hidden-md-and-up">
       <v-list>
         <v-list-item v-for="(item, index) in menuItems" :key="index">
-          <v-list-item-action>
+<!--          <v-list-item-action>-->
 <!--            <v-icon>mdi-export-variant</v-icon>-->
-          </v-list-item-action>
+<!--          </v-list-item-action>-->
           <v-list-item-content>
             <router-link :to="item.route">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -75,7 +75,7 @@ export default {
   }),
   methods: {
     signOut() {
-      this.$confirm("Do you really want to exit?").then(res => {
+      this.$confirm("Do you really want to sign out?").then(res => {
         if (res) {
           this.$store.dispatch("SIGN_OUT")
         }

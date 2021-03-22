@@ -4,19 +4,15 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import firebaseConfig from "@/config/firebase";
-import VuetifyConfrim from 'vuetify-confirm';
+import VuetifyConfirm from 'vuetify-confirm';
 import firebase from "firebase";
 
 Vue.config.productionTip = false
 
-Vue.use(VuetifyConfrim, {
+Vue.use(VuetifyConfirm, {
+    vuetify,
     bottomTruText: 'Yes',
     bottomFalseText: "No",
-    // color: 'warning',
-    // icon: 'warning',
-    // title: 'Warning',
-    // width: 300,
-    // property: "$confirm"
 })
 
 firebase.initializeApp(firebaseConfig)
