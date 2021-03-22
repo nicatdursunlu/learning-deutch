@@ -15,8 +15,8 @@
             >
               {{ error }}
             </v-alert>
-            <v-form>
-              <v-text-field name="login" label="E-mail" type="email" v-model="email" required/>
+            <v-form v-model="valid">
+              <v-text-field name="login" label="E-mail" type="email" v-model="email" required :rules="emailRules" />
               <v-text-field
                   id="password"
                   name="password"
@@ -24,12 +24,13 @@
                   type="password"
                   v-model="password"
                   required
+                  :rules="passwordRules"
               />
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer/>
-            <v-btn @click.prevent="signup" class="primary" :disabled="processing">Signup</v-btn>
+            <v-btn @click.prevent="signup" class="primary" :disabled="processing || !valid">Signup</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -41,7 +42,16 @@
 export default {
   data: () => ({
     email: null,
-    password: null
+    password: null,
+    valid: false,
+    emailRules: [
+      (v) => !!v || "Please write your email",
+      (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || "Wrong email"
+    ],
+    passwordRules: [
+      (v) => !!v || "Please write password",
+      (v) => (v && v.length >= 6) || "Password is so short - minimum 6 symbols"
+    ]
   }),
   computed: {
     error() {
@@ -56,7 +66,7 @@ export default {
   },
   watch: {
     isUserAuthenticated(val) {
-      if( val) {
+      if (val) {
         this.$router.push("/")
       }
     }
