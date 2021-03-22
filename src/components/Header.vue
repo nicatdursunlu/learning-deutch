@@ -34,17 +34,15 @@
 <script>
 export default {
   computed: {
+    isUserAuthenticated() {
+      return this.$store.getters.isUserAuthenticated
+    },
     menuItems() {
-      return [
+      return this.isUserAuthenticated ? [
         {
           icon: "visibility",
           title: "Read",
           route: "/books"
-        },
-        {
-          icon: "extension",
-          title: "Learn words",
-          route: "/words"
         },
         {
           icon: "account_circle",
@@ -56,6 +54,11 @@ export default {
           title: "Logout",
           route: "/logout"
         },
+      ] : [{
+        icon: "visibility",
+        title: "Read",
+        route: "/books"
+      },
         {
           icon: "input",
           title: "Signin",
@@ -65,8 +68,7 @@ export default {
           icon: "lock_open",
           title: "Signup",
           route: "/signup"
-        },
-      ]
+        },]
     }
   },
   data: () => ({

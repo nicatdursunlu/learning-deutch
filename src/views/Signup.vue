@@ -4,7 +4,7 @@
       <v-flex xs12 sm8 md6>
         <v-card class="elevation-12">
           <v-toolbar dark color="primary">
-            <v-toolbar-title>Login</v-toolbar-title>
+            <v-toolbar-title>Signup</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-alert
@@ -29,7 +29,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer/>
-            <v-btn @click.prevent="signup" class="primary">Login</v-btn>
+            <v-btn @click.prevent="signup" class="primary" :disabled="processing">Signup</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -46,6 +46,19 @@ export default {
   computed: {
     error() {
       return this.$store.getters.getError
+    },
+    processing() {
+      return this.$store.getters.getProcessing
+    },
+    isUserAuthenticated() {
+      return this.$store.getters.isUserAuthenticated
+    }
+  },
+  watch: {
+    isUserAuthenticated(val) {
+      if( val) {
+        this.$router.push("/")
+      }
     }
   },
   methods: {
