@@ -3,9 +3,9 @@
     <v-navigation-drawer absolute temporary v-model="drawer" class="hidden-md-and-up">
       <v-list>
         <v-list-item v-for="(item, index) in menuItems" :key="index">
-<!--          <v-list-item-action>-->
-<!--            <v-icon>mdi-export-variant</v-icon>-->
-<!--          </v-list-item-action>-->
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
           <v-list-item-content>
             <router-link :to="item.route">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -23,10 +23,11 @@
       <v-spacer/>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.route" class="primary">
-          <!--          <v-icon left>mdi-export-variant</v-icon>-->
+          <v-icon left>{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
         <v-btn v-if="isUserAuthenticated" flat class="primary" @click.prevent="signOut">
+          <v-icon>exit_to_app</v-icon>
           Sign out
         </v-btn>
       </v-toolbar-items>
@@ -43,28 +44,28 @@ export default {
     menuItems() {
       return this.isUserAuthenticated ? [
         {
-          // icon: "visibility",
+          icon: "visibility",
           title: "Read",
           route: "/books"
         },
         {
-          // icon: "account_circle",
+          icon: "account_circle",
           title: "My profile",
           route: "/profile"
         },
       ] : [
         {
-          // icon: "visibility",
+          icon: "visibility",
           title: "Read",
           route: "/books"
         },
         {
-          // icon: "input",
+          icon: "input",
           title: "Signin",
           route: "/signin"
         },
         {
-          // icon: "lock_open",
+          icon: "lock_open",
           title: "Signup",
           route: "/signup"
         },]

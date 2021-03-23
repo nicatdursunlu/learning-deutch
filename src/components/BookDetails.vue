@@ -6,7 +6,10 @@
           <v-img
               src="https://webbiesworld.com/wp-content/uploads/2020/10/Harry-Potter.jpg"/>
           <div class="text-center">
-            <v-btn style="color: white" color="primary">You Tube</v-btn>
+            <v-btn style="color: white" color="primary">
+              <v-icon class="mr-2">visibility</v-icon>
+              You Tube
+            </v-btn>
           </div>
         </v-flex>
         <v-flex xs8 md9>
@@ -41,7 +44,10 @@
               <div>
                 <h4 class="headline">{{ book.title }}</h4>
                 <div class="text-center">
-                  <v-btn style="color: white" color="primary">You Tube</v-btn>
+                  <v-btn style="color: white" color="primary">
+                    <v-icon class="mr-2">visibility</v-icon>
+                    You Tube
+                  </v-btn>
                 </div>
               </div>
             </v-card-title>

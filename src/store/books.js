@@ -104,7 +104,7 @@ export default {
                 bookPartId: "cvnhejfnjwfwf3f",
                 bookTitle: "Harry Potter und der Stein der Weisen - 3",
                 partTitle: "Kapital 1",
-                youtubeId: "cjnwnfnwqd",
+                youtubeId: "u4DUmKFScvU",
                 content: [
                     {
                         sentences: [

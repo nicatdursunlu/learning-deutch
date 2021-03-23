@@ -3,8 +3,8 @@
     <v-card color="accent" class="white--text">
       <v-card-title primary-title class="headline">{{ part.title }}</v-card-title>
       <v-card-actions>
-        <v-spacer />
-        <v-btn color="primary" flat :to="{ name: 'BookPart', params: { bookId, partId: part.id} }">Open</v-btn>
+        <v-spacer/>
+        <v-btn color="primary" flat :to="{ name: 'BookPart', params: { bookId, partId: part.id } }">Open</v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -17,7 +17,6 @@ export default {
       type: Object,
       required: true
     },
-
     bookId: {
       required: true
     }
