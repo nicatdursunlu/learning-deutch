@@ -25,7 +25,7 @@
               <span>({{ book.ratingsCount }})</span>
             </div>
             <v-spacer/>
-            <v-btn class="primary" flat :to="{ name: 'Book', params: { id: book.id } }" >Open</v-btn>
+            <v-btn class="primary" flat>Download</v-btn>
           </v-card-actions>
         </v-flex>
       </v-layout>
@@ -66,7 +66,7 @@
                 <span>({{ book.ratingsCount }})</span>
               </div>
               <v-spacer/>
-              <v-btn class="primary" flat :to="{ name: 'Book', params: { id: book.id } }">Open</v-btn>
+              <v-btn class="primary" flat>Download</v-btn>
             </v-card-actions>
           </v-flex>
         </v-layout>

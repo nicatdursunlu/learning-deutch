@@ -1,19 +1,25 @@
 <template>
   <v-container v-if="book" grid-list-md>
     <v-layout row wrap>
-      <v-flex xs12 xs10 offset-sm1>
-
+      <v-flex xs12 sm10 offset-sm1>
+        <BookDetails :book="book"/>
       </v-flex>
-      <v-flex xs12 xs10 offset-sm1>
-
+      <v-flex v-for="part in book.parts" :key="part.id" xs12 sm10 offset-sm1>
+        <BookPartListItem :part="part" :bookId="book.id"/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import BookDetails from "@/components/BookDetails";
+import BookPartListItem from "@/components/BookPartListItem";
 
 export default {
+  components: {
+    BookDetails,
+    BookPartListItem
+  },
   props: {
     id: {
       type: String,

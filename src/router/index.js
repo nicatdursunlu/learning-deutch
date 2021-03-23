@@ -8,6 +8,7 @@ import Signin from "@/views/Signin";
 import Profile from "@/views/Profile";
 import Signup from "@/views/Signup";
 import Book from "@/views/Book";
+import BookPart from "@/views/BookPart";
 
 import store from '../store'
 
@@ -29,6 +30,12 @@ const routes = [
     path: '/book/:id',
     name: 'Book',
     component: Book,
+    props: true
+  },
+  {
+    path: '/book/:bookId/part/:partId',
+    name: 'BookPart',
+    component: BookPart,
     props: true
   },
   {
