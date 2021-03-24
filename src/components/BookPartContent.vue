@@ -18,16 +18,33 @@
             <span>&nbsp;&nbsp;</span>
             <span v-for="(sentence, y) in paragraph.sentences" :key="`par1${i}sen1${y}`">
               <span>{{ sentence.origText }}</span>
-              <v-icon>help</v-icon>
-              <span class="success--text" style="font-weight: bold">
+              <v-icon size="18" @click.prevent="toggleVisibility(i, y)">help</v-icon>
+              <span v-if="getVisibilityFlag(i, y).value" class="success--text" style="font-weight: bold">
                 {{ sentence.transText }}
               </span>
             </span>
           </div>
         </v-tab-item>
-        <v-tab-item :key="'sideBySide'">
 
+        <v-tab-item :key="'sideBySide'">
+          <v-container>
+            <v-layout row wrap v-for="(paragraph, i) in part.content" :key="`par2${i}`">
+              <v-flex xs6>
+                <span>&nbsp;&nbsp;</span>
+                <span v-for="(sentence, y) in paragraph.sentences" :key="`par2${i}sen2${y}_orig`">
+                  <span>{{ sentence.origText }}</span>
+                </span>
+              </v-flex>
+              <v-flex xs6>
+                <span>&nbsp;&nbsp;</span>
+                <span v-for="(sentence, y) in paragraph.sentences" :key="`par2${i}sen2${y}_trans`">
+                  <span>{{ sentence.transText }}</span>
+                </span>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-tab-item>
+
       </v-tabs>
     </div>
   </v-card>
@@ -42,8 +59,28 @@ export default {
     }
   },
   data: () => ({
-    tabMode: 'german'
+    tabMode: 'german',
+    visibilityKeys: []
   }),
+  methods: {
+    getVisibilityFlag(i, y) {
+      return this.visibilityKeys.find(k => k.key === `${i}${y}`);
+    },
+    toggleVisibility(i, y) {
+      let flag = this.getVisibilityFlag(i, y);
+      flag.value = !flag.value
+    }
+  },
+  created() {
+    for (var i = 0; i < this.part.content, length; i++) {
+      for (var y = 0; y < this.part.content[i].sentences.length; y++) {
+        this.visibilityKeys.push({
+          key: `${i}${y}`,
+          value: false
+        })
+      }
+    }
+  },
   computed: {
     // playerWidth() {
     //   switch (this.$vuetify.breakpoint.name) {
